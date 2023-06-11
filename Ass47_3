@@ -1,0 +1,71 @@
+#include<iostream>
+using namespace std;
+
+template<class T>
+class GenericX
+{
+    public:
+    int iSize;
+    T *Arr;
+
+    GenericX(int iLength);
+
+    void Accept();
+
+    T Addition();
+};
+
+template<class T>
+GenericX <T> :: GenericX(int iLength)
+{
+    iSize = iLength;
+    Arr = new T [iSize];
+
+}
+
+template<class T>
+void GenericX <T>:: Accept()
+{
+    cout<<"Please enter the elements i array\n";
+    for(int i = 0; i < iSize; i++)
+    {
+        cin>>Arr[i];
+    }
+    cout<<"\n";
+}
+
+template<class T>
+T GenericX <T>:: Addition()
+{
+    T iSum = 0;
+    for(int i = 0; i < iSize; i++)
+    {
+        iSum = iSum + Arr[i];
+    }
+    return iSum;
+}
+
+
+
+int main()
+{
+    int iRet = 0;
+    GenericX <int> obj(3);
+    obj.Accept();
+    iRet = obj.Addition();
+    cout<<"Addition of integer array is :"<<iRet<<"\n";
+
+    int iRet1 = 0;
+    GenericX <float> obj1(3);
+    obj1.Accept();
+    iRet1 = obj1.Addition();
+    cout<<"Addition of float array is :"<<iRet1<<"\n";
+
+    int iRet2 = 0;
+    GenericX <double> obj2(3);
+    obj2.Accept();
+    iRet2 = obj2.Addition();
+    cout<<"Addition of integer array is :"<<iRet2<<"\n";
+
+    return 0;
+}
